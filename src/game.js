@@ -10,6 +10,7 @@ async function connectWallet() {
       try {
         const resp = await provider.connect();
         console.log('Connected to wallet:', resp.publicKey.toString());
+        document.getElementById('connect-wallet-button').innerText = "Wallet Connected";
       } catch (err) {
         console.error('Wallet connection failed:', err);
       }
@@ -148,6 +149,7 @@ document.getElementById('play-button').addEventListener('click', function () {
   isPlaying = true;
   resetGame(); // Reiniciar el juego al hacer clic en "Play"
 });
+
 
 
 
