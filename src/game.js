@@ -13,9 +13,11 @@ async function connectWallet() {
       } catch (err) {
         console.error('Wallet connection failed:', err);
       }
+    } else {
+      alert('Phantom Wallet no está disponible. Instala Phantom Wallet para continuar.');
     }
   } else {
-    alert('Solana wallet not found. Please install Phantom Wallet.');
+    alert('Solana wallet no encontrada. Por favor, instala Phantom Wallet.');
   }
 }
 
@@ -84,7 +86,7 @@ function updatePipes() {
     if (
       bonk.x < pipe.x + pipeWidth &&
       bonk.x + bonk.width > pipe.x &&
-      (bonk.y < pipe.top || bonk.y + bonk.height > pipe.top + pipeGap)
+      (bonk.y < pipe.top || bonk.y + pipe.top + pipeGap > canvas.height)
     ) {
       resetGame();
     }
@@ -130,3 +132,4 @@ document.addEventListener("keydown", function (event) {
 // Iniciar el bucle del juego
 setInterval(update, 20);
 setInterval(draw, 20);
+
