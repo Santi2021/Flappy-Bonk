@@ -1,7 +1,5 @@
-import { Connection, clusterApiUrl } from '@solana/web3.js';
-
 // Configuración de la conexión a Solana
-const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'), 'confirmed');
 
 async function connectWallet() {
   if ('solana' in window) {
@@ -86,7 +84,7 @@ function updatePipes() {
     if (
       bonk.x < pipe.x + pipeWidth &&
       bonk.x + bonk.width > pipe.x &&
-      (bonk.y < pipe.top || bonk.y + pipe.top + pipeGap > canvas.height)
+      (bonk.y < pipe.top || bonk.y + bonk.height > pipe.top + pipeGap)
     ) {
       resetGame();
     }
@@ -132,4 +130,5 @@ document.addEventListener("keydown", function (event) {
 // Iniciar el bucle del juego
 setInterval(update, 20);
 setInterval(draw, 20);
+
 
