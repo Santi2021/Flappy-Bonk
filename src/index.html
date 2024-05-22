@@ -16,7 +16,7 @@
     canvas {
       border: 1px solid black;
     }
-    #connect-wallet-button {
+    #connect-wallet-button, #play-button {
       margin-top: 20px;
     }
   </style>
@@ -24,9 +24,11 @@
 <body>
   <canvas id="gameCanvas" width="400" height="400"></canvas>
   <button id="connect-wallet-button">Connect Wallet</button>
-  <script src="https://unpkg.com/@solana/web3.js@1.33.0/lib/index.iife.js"></script> <!-- Añadir este script -->
+  <button id="play-button">Play</button> <!-- Añadir botón "Play" -->
+  <script src="https://unpkg.com/@solana/web3.js@1.33.0/lib/index.iife.js"></script>
   <script src="game.js"></script>
 </body>
 </html>
+
 
 

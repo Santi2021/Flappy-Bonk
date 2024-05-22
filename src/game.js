@@ -31,8 +31,8 @@ const bonk = {
   y: 150,
   width: 20,
   height: 20,
-  gravity: 0.6,
-  lift: -15,
+  gravity: 0.4, // Ajustar la gravedad
+  lift: -10, // Ajustar la fuerza del salto
   velocity: 0
 };
 
@@ -41,6 +41,7 @@ const pipeWidth = 20;
 const pipeGap = 100;
 let frameCount = 0;
 let score = 0;
+let isPlaying = false; // Variable para controlar el estado del juego
 
 function drawBonk() {
   ctx.fillStyle = "yellow";
@@ -105,6 +106,7 @@ function resetGame() {
   pipes.length = 0;
   score = 0;
   frameCount = 0;
+  isPlaying = false;
 }
 
 function draw() {
@@ -115,14 +117,16 @@ function draw() {
 }
 
 function update() {
-  updateBonk();
-  updatePipes();
-  frameCount++;
+  if (isPlaying) {
+    updateBonk();
+    updatePipes();
+    frameCount++;
+  }
 }
 
 // Control del bonk
 document.addEventListener("keydown", function (event) {
-  if (event.code === "Space") {
+  if (event.code === "Space" && isPlaying) {
     bonk.velocity = bonk.lift;
   }
 });
@@ -130,5 +134,12 @@ document.addEventListener("keydown", function (event) {
 // Iniciar el bucle del juego
 setInterval(update, 20);
 setInterval(draw, 20);
+
+// Funcionalidad del botón "Play"
+document.getElementById('play-button').addEventListener('click', function () {
+  isPlaying = true;
+  resetGame(); // Reiniciar el juego al hacer clic en "Play"
+});
+
 
 
