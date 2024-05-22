@@ -1,14 +1,29 @@
-"<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flappy Bonk</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      border: 1px solid black;
+    }
+    #connect-wallet-button {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="gameCanvas"></canvas>
-  <script src="game.js"></script>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+  <button id="connect-wallet-button">Connect Wallet</button>
+  <script src="src/game.js"></script>
 </body>
 </html>
-" 
