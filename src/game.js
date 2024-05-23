@@ -138,3 +138,4 @@ document.getElementById('play-button').addEventListener('click', function () {
   startGame(); // Iniciar el juego al hacer clic en "Play"
 });
 
+
