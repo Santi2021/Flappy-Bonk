@@ -44,8 +44,10 @@ function drawScore() {
 function updateBonk() {
   bonk.velocity += bonk.gravity;
   bonk.y += bonk.velocity;
+  console.log(`Bonk position: y=${bonk.y}, velocity=${bonk.velocity}`);
 
   if (bonk.y + bonk.height > canvas.height || bonk.y < 0) {
+    console.log("Collision with canvas boundaries");
     resetGame();
   }
 }
@@ -65,6 +67,7 @@ function updatePipes() {
       bonk.x + bonk.width > pipe.x &&
       (bonk.y < pipe.top || bonk.y + bonk.height > pipe.top + pipeGap)
     ) {
+      console.log("Collision with pipe");
       resetGame();
     }
   }
@@ -75,6 +78,7 @@ function updatePipes() {
       x: canvas.width,
       top: pipeTop
     });
+    console.log("New pipe generated");
   }
 }
 
@@ -111,6 +115,7 @@ function update() {
     updateBonk();
     updatePipes();
     frameCount++;
+    console.log(`Frame count: ${frameCount}`);
   }
 }
 
@@ -118,6 +123,7 @@ function update() {
 document.addEventListener("keydown", function (event) {
   if (event.code === "Space" && isPlaying) {
     bonk.velocity = bonk.lift;
+    console.log("Spacebar pressed, Bonk jumps");
   }
 });
 
