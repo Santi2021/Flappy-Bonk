@@ -1,36 +1,6 @@
-// Configuración de la conexión a Solana
-console.log("Script game.js cargado correctamente");
-const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'), 'confirmed');
-
-async function connectWallet() {
-  console.log("Intentando conectar la wallet");
-  if ('solana' in window) {
-    const provider = window.solana;
-    if (provider.isPhantom) {
-      try {
-        const resp = await provider.connect();
-        console.log('Connected to wallet:', resp.publicKey.toString());
-        document.getElementById('connect-wallet-button').innerText = "Wallet Connected";
-      } catch (err) {
-        console.error('Wallet connection failed:', err);
-      }
-    } else {
-      alert('Phantom Wallet no está disponible. Instala Phantom Wallet para continuar.');
-    }
-  } else {
-    alert('Solana wallet no encontrada. Por favor, instala Phantom Wallet.');
-  }
-}
-
-document.getElementById('connect-wallet-button').addEventListener('click', () => {
-  console.log("Botón Connect Wallet clickeado");
-  connectWallet();
-});
-
 // Código del juego Flappy Bonk
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-console.log("Canvas y contexto cargados");
 
 // Variables del juego
 const bonk = {
