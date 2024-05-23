@@ -83,8 +83,13 @@ function resetGame() {
   pipes.length = 0;
   score = 0;
   frameCount = 0;
-  isPlaying = false;
   console.log("Juego reiniciado");
+}
+
+function startGame() {
+  isPlaying = true;
+  resetGame();
+  console.log("Juego iniciado");
 }
 
 function draw() {
@@ -116,9 +121,9 @@ setInterval(draw, 20);
 // Funcionalidad del botón "Play"
 document.getElementById('play-button').addEventListener('click', function () {
   console.log("Botón Play clickeado");
-  isPlaying = true;
-  resetGame(); // Reiniciar el juego al hacer clic en "Play"
+  startGame(); // Iniciar el juego al hacer clic en "Play"
 });
+
 
 
 
