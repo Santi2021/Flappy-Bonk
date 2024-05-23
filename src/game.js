@@ -8,8 +8,8 @@ const bonk = {
   y: 150,
   width: 20,
   height: 20,
-  gravity: 0.1, // Ralentizar la gravedad para diagnóstico
-  lift: -5, // Ajustar la fuerza del salto para diagnóstico
+  gravity: 0.4, // Ajustar la gravedad
+  lift: -10, // Ajustar la fuerza del salto
   velocity: 0
 };
 
@@ -60,6 +60,7 @@ function updatePipes() {
     if (pipe.x + pipeWidth < 0) {
       pipes.splice(i, 1);
       score++;
+      console.log("Pipe passed, score increased");
     }
 
     if (
@@ -78,7 +79,7 @@ function updatePipes() {
       x: canvas.width,
       top: pipeTop
     });
-    console.log("New pipe generated");
+    console.log("New pipe generated at position:", pipeTop);
   }
 }
 
@@ -94,11 +95,10 @@ function resetGame() {
 
 function startGame() {
   isPlaying = true;
-  resetGame();
+  frameCount = 0; // Asegúrate de que el retraso inicial esté activo
   bonk.y = 150;
   bonk.velocity = 0;
   pipes.length = 0;
-  frameCount = 0;
   score = 0;
   console.log("Juego iniciado");
 }
@@ -136,13 +136,3 @@ document.getElementById('play-button').addEventListener('click', function () {
   console.log("Botón Play clickeado");
   startGame(); // Iniciar el juego al hacer clic en "Play"
 });
-
-
-
-
-
-
-
-
-
-
