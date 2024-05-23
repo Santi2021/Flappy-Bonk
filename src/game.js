@@ -19,7 +19,7 @@ const pipeGap = 100;
 let frameCount = 0;
 let score = 0;
 let isPlaying = false; // Variable para controlar el estado del juego
-let gameStartDelay = 100; // Aumentar el retraso inicial para generar obstáculos
+let gameStartDelay = 5; // Aumentar el retraso inicial para generar obstáculos
 
 function drawBonk() {
   ctx.fillStyle = "yellow";
