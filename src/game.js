@@ -8,8 +8,8 @@ const bonk = {
   y: 150,
   width: 20,
   height: 20,
-  gravity: 0.4, // Ajustar la gravedad
-  lift: -10, // Ajustar la fuerza del salto
+  gravity: 0.2, // Gravedad moderada
+  lift: -5, // Fuerza de salto menor
   velocity: 0
 };
 
@@ -19,7 +19,7 @@ const pipeGap = 100;
 let frameCount = 0;
 let score = 0;
 let isPlaying = false; // Variable para controlar el estado del juego
-let gameStartDelay = 5; // Aumentar el retraso inicial para generar obstáculos
+let gameStartDelay = 100; // Aumentar el retraso inicial para generar obstáculos
 
 function drawBonk() {
   ctx.fillStyle = "yellow";
@@ -32,6 +32,7 @@ function drawPipes() {
     const pipe = pipes[i];
     ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
     ctx.fillRect(pipe.x, pipe.top + pipeGap, pipeWidth, canvas.height - pipe.top - pipeGap);
+    console.log(`Drawing pipe at x=${pipe.x}, top=${pipe.top}`);
   }
 }
 
@@ -136,3 +137,4 @@ document.getElementById('play-button').addEventListener('click', function () {
   console.log("Botón Play clickeado");
   startGame(); // Iniciar el juego al hacer clic en "Play"
 });
+
