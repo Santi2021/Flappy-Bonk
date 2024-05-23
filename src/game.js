@@ -69,7 +69,7 @@ function updatePipes() {
   }
 
   if (frameCount % 75 === 0) {
-    const pipeTop = Math.floor(Math.random() * (canvas.height - pipeGap));
+    const pipeTop = Math.floor(Math.random() * (canvas.height - pipeGap - 50)) + 25;
     pipes.push({
       x: canvas.width,
       top: pipeTop
@@ -83,12 +83,18 @@ function resetGame() {
   pipes.length = 0;
   score = 0;
   frameCount = 0;
+  isPlaying = false;
   console.log("Juego reiniciado");
 }
 
 function startGame() {
   isPlaying = true;
   resetGame();
+  bonk.y = 150;
+  bonk.velocity = 0;
+  pipes.length = 0;
+  frameCount = 0;
+  score = 0;
   console.log("Juego iniciado");
 }
 
@@ -123,6 +129,7 @@ document.getElementById('play-button').addEventListener('click', function () {
   console.log("Botón Play clickeado");
   startGame(); // Iniciar el juego al hacer clic en "Play"
 });
+
 
 
 
