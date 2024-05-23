@@ -19,6 +19,7 @@ const pipeGap = 100;
 let frameCount = 0;
 let score = 0;
 let isPlaying = false; // Variable para controlar el estado del juego
+let gameStartDelay = 50; // Retraso inicial para generar obstáculos
 
 function drawBonk() {
   ctx.fillStyle = "yellow";
@@ -68,7 +69,7 @@ function updatePipes() {
     }
   }
 
-  if (frameCount % 75 === 0) {
+  if (frameCount % 75 === 0 && frameCount > gameStartDelay) {
     const pipeTop = Math.floor(Math.random() * (canvas.height - pipeGap - 50)) + 25;
     pipes.push({
       x: canvas.width,
@@ -129,6 +130,7 @@ document.getElementById('play-button').addEventListener('click', function () {
   console.log("Botón Play clickeado");
   startGame(); // Iniciar el juego al hacer clic en "Play"
 });
+
 
 
 
